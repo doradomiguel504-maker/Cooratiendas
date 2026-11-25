@@ -1,0 +1,1358 @@
+<!DOCTYPE html> <!-- Indica al navegador que el documento utiliza el estándar HTML5 -->
+<html lang="es"> <!-- Etiqueta raíz del documento; establece el idioma español para accesibilidad WCAG 2.2 -->
+
+<head> <!-- Cabecera del documento con metadatos, título y enlaces a hojas de estilo -->
+    <meta charset="UTF-8"> <!-- Define codificación UTF-8 para tildes, eñes (ñ) y símbolos monetarios -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura la escala responsiva para móviles, tabletas y PC -->
+    <title>Cooratiendas Colombia | Supermercado Cooperativo</title> <!-- Título mostrado en la pestaña del navegador -->
+
+    <!-- Carga Bootstrap 5.3 desde CDN oficial -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Enlaza la hoja de estilos personalizada ubicada en la carpeta css/ -->
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+    <!-- Atajo de accesibilidad WCAG 2.2 -->
+    <a href="#contenido-principal" class="saltar-contenido">Saltar al contenido principal</a>
+
+    <!-- ==================== 1. BANNER SUPERIOR DE PROMOCIONES ==================== -->
+    <div class="banner-superior py-2 px-3" role="region" aria-label="Anuncio promocional">
+        <p class="mb-0">Madrugón Cooperativo: Envío GRATIS en Bogotá y Cundinamarca por compras desde $150.000 COP</p>
+        <button type="button" class="btn btn-warning btn-sm fw-bold" data-ir-vista="vista-promociones">Ver Ofertas</button>
+    </div>
+
+    <!-- ==================== 2. BARRA DE ACCESIBILIDAD (WCAG 2.2 AA) ==================== -->
+    <div class="barra-accesibilidad py-1 px-4" role="region" aria-label="Herramientas de accesibilidad">
+        <span id="saludo-usuario-top" class="me-auto text-warning fw-bold small"></span>
+        <span>Accesibilidad:</span>
+        <button type="button" id="btn-disminuir-texto" class="btn btn-outline-light btn-sm" aria-label="Disminuir tamaño de letra">A-</button>
+        <button type="button" id="btn-restaurar-texto" class="btn btn-outline-light btn-sm" aria-label="Restaurar tamaño de letra">A</button>
+        <button type="button" id="btn-aumentar-texto" class="btn btn-outline-light btn-sm" aria-label="Aumentar tamaño de letra">A+</button>
+        <button type="button" id="btn-alto-contraste" class="btn btn-outline-warning btn-sm" aria-pressed="false">Alto Contraste</button>
+        <button type="button" id="btn-tema" class="btn btn-outline-info btn-sm" aria-pressed="false">Modo Oscuro</button>
+    </div>
+
+    <!-- ==================== 3. ENCABEZADO Y NAVBAR DE BOOTSTRAP 5 ==================== -->
+    <header class="encabezado sticky-top shadow-sm">
+        <nav class="navbar navbar-expand-xl container py-2" aria-label="Menú principal">
+
+            <div class="navbar-brand d-flex align-items-center gap-2 m-0">
+                <picture>
+                    <source srcset="Imagenes/logoCreator_imagetologo_converted.avif" type="image/avif">
+                    <source srcset="Imagenes/logoCreator_imagetologo.webp" type="image/webp">
+                    <img src="Imagenes/logoCreator_imagetologo.png" alt="Logo oficial de Cooratiendas Colombia" width="44" height="44" class="logo-img">
+                </picture>
+                <div>
+                    <h1 class="h5 fw-bold mb-0 titulo-marca">Coora<span>tiendas</span></h1>
+                    <small class="d-block subtitulo-logo">Cooperativa desde 1986</small>
+                </div>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menú de navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="menuPrincipal">
+                <ul class="navbar-nav gap-1 my-2 my-xl-0">
+                    <li class="nav-item"><button type="button" class="nav-link-landing activo" data-vista="vista-inicio">Inicio</button></li>
+                    <li class="nav-item"><button type="button" class="nav-link-landing" data-vista="vista-promociones">Promociones</button></li>
+                    <li class="nav-item"><button type="button" class="nav-link-landing" data-vista="vista-catalogo">Catálogo (90)</button></li>
+                    <li class="nav-item"><button type="button" class="nav-link-landing" data-vista="vista-recetas">Recetas</button></li>
+                    <li class="nav-item"><button type="button" class="nav-link-landing" data-vista="vista-conocenos">Conócenos</button></li>
+                    <li class="nav-item"><button type="button" class="nav-link-landing" data-vista="vista-sedes">Sedes y PQRS</button></li>
+                    <li class="nav-item"><button type="button" class="nav-link-landing" data-vista="vista-registro" id="nav-btn-registro">Registro / Cuenta</button></li>
+                </ul>
+            </div>
+
+            <button type="button" id="btn-abrir-carrito" class="btn btn-success btn-sm fw-bold" aria-label="Ver carrito de compras">
+                Carrito (<span id="contador-carrito">0</span>)
+            </button>
+        </nav>
+    </header>
+
+    <!-- ==================== 4. CONTENIDO PRINCIPAL (7 VISTAS LANDING) ==================== -->
+    <main id="contenido-principal" class="container my-4" tabindex="-1">
+
+        <!-- ==================== VISTA 1: INICIO ==================== -->
+        <div id="vista-inicio" class="landing-page activa">
+            <section class="caja-seccion p-4 p-md-5 mb-4 rounded-3">
+                <div class="row align-items-center g-4">
+                    <div class="col-lg-6">
+                        <span class="badge bg-warning text-dark mb-2">Economía Solidaria · Precios Justos</span>
+                        <h2 class="fw-bold titulo-rojo mb-3">Mercar en Cooratiendas es apoyar el campo colombiano</h2>
+                        <p class="mb-4">Encuentra 90 productos esenciales en 6 categorías, recetas tradicionales, ofertas semanales y registro de socios con beneficios.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="button" class="btn btn-success" data-ir-vista="vista-catalogo">Explorar Catálogo (90)</button>
+                            <button type="button" class="btn btn-warning fw-bold" data-ir-vista="vista-registro">Registrarme Gratis</button>
+                            <button type="button" class="btn btn-outline-danger fw-bold" data-ir-vista="vista-recetas">Ver Recetas</button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 text-center">
+                        <picture>
+                            <source type="image/avif" srcset="Imagenes/logo.avif" sizes="(max-width: 768px) 100vw, 50vw">
+                            <source type="image/webp" srcset="Imagenes/logo.webp" sizes="(max-width: 768px) 100vw, 50vw">
+                            <img src="Imagenes/logo.png" sizes="(max-width: 768px) 100vw, 50vw" alt="Canasta familiar colombiana de Cooratiendas" width="500" height="330" class="img-fluid rounded-3">
+                        </picture>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pasillos rápidos -->
+            <section class="mb-4">
+                <h2 class="h4 fw-bold text-center titulo-rojo mb-3">Nuestros Pasillos (15 productos por categoría)</h2>
+                <div class="row g-3">
+                    <div class="col-6 col-md-4 col-lg-2"><button type="button" class="tarjeta-pasillo w-100 h-100" data-ir-categoria="abarrotes"><strong>Abarrotes</strong><span>15 productos</span></button></div>
+                    <div class="col-6 col-md-4 col-lg-2"><button type="button" class="tarjeta-pasillo w-100 h-100" data-ir-categoria="lacteos"><strong>Lácteos y Huevos</strong><span>15 productos</span></button></div>
+                    <div class="col-6 col-md-4 col-lg-2"><button type="button" class="tarjeta-pasillo w-100 h-100" data-ir-categoria="frutas"><strong>Frutas y Verduras</strong><span>15 productos</span></button></div>
+                    <div class="col-6 col-md-4 col-lg-2"><button type="button" class="tarjeta-pasillo w-100 h-100" data-ir-categoria="carnes"><strong>Carnes y Pollo</strong><span>15 productos</span></button></div>
+                    <div class="col-6 col-md-4 col-lg-2"><button type="button" class="tarjeta-pasillo w-100 h-100" data-ir-categoria="panaderia"><strong>Panadería y Café</strong><span>15 productos</span></button></div>
+                    <div class="col-6 col-md-4 col-lg-2"><button type="button" class="tarjeta-pasillo w-100 h-100" data-ir-categoria="aseo"><strong>Aseo Hogar</strong><span>15 productos</span></button></div>
+                </div>
+            </section>
+
+            <!-- Bloques informativos de beneficios -->
+            <section class="row g-3">
+                <div class="col-md-4">
+                    <article class="card h-100 caja-seccion p-3">
+                        <h3 class="h5 fw-bold titulo-rojo">1. Compra Directa al Campo</h3>
+                        <p class="small mb-0">Trabajamos sin intermediarios con agricultores de Boyacá, Cundinamarca y el Quindío para garantizar frescura diaria.</p>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <article class="card h-100 caja-seccion p-3">
+                        <h3 class="h5 fw-bold titulo-rojo">2. Beneficio para Registrados</h3>
+                        <p class="small mb-0">Crea tu cuenta gratuita en la sección <strong>Registro / Cuenta</strong> y obtén un <strong>5% de descuento adicional</strong> automático en todo tu carrito.</p>
+                    </article>
+                </div>
+                <div class="col-md-4">
+                    <article class="card h-100 caja-seccion p-3">
+                        <h3 class="h5 fw-bold titulo-rojo">3. Pedidos por WhatsApp</h3>
+                        <p class="small mb-0">Arma tu mercado en línea y envíalo con un clic a nuestra línea oficial <strong>+57 312 426 1632</strong>.</p>
+                    </article>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== VISTA 2: PROMOCIONES ==================== -->
+        <div id="vista-promociones" class="landing-page oculto">
+            <section class="banner-promociones p-4 mb-4 rounded-3">
+                <div class="row align-items-center g-3">
+                    <div class="col-md-8">
+                        <span class="badge bg-warning text-dark mb-2">OFERTAS DE LA SEMANA</span>
+                        <h2 class="fw-bold mb-1">Ahorra hasta un 30% en tu mercado familiar</h2>
+                        <p class="mb-0">Precios transparentes conforme al Estatuto del Consumidor (Ley 1480 de 2011).</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="caja-temporizador p-3 rounded-3">
+                            <span class="d-block small">La oferta termina en:</span>
+                            <strong id="reloj-promo" class="fs-4 text-warning">08h : 45m : 30s</strong>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <h2 class="h4 fw-bold titulo-rojo mb-3">Productos en Descuento</h2>
+            <div class="row g-3" id="rejilla-promociones"></div>
+        </div>
+
+        <!-- ==================== VISTA 3: CATÁLOGO DE 90 PRODUCTOS ==================== -->
+        <div id="vista-catalogo" class="landing-page oculto">
+            <div class="row align-items-center g-3 mb-3">
+                <div class="col-md-6">
+                    <h2 class="h4 fw-bold titulo-rojo mb-0">Catálogo Cooratiendas (90 Productos)</h2>
+                </div>
+                <div class="col-md-6">
+                    <label for="input-buscar" class="form-label fw-bold small mb-1">Buscar producto:</label>
+                    <div class="d-flex gap-2">
+                        <input type="search" id="input-buscar" class="form-control" placeholder="Ej: Arroz Diana, Chocoramo, Papa criolla...">
+                        <button type="button" id="btn-cambiar-vista" class="btn btn-outline-secondary text-nowrap">Vista Lista</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2 mb-4" role="group" aria-label="Filtrar por categoría">
+                <button type="button" class="btn-filtro activo" data-categoria="todos">Todos (90)</button>
+                <button type="button" class="btn-filtro" data-categoria="abarrotes">Abarrotes (15)</button>
+                <button type="button" class="btn-filtro" data-categoria="lacteos">Lácteos y Huevos (15)</button>
+                <button type="button" class="btn-filtro" data-categoria="frutas">Frutas y Verduras (15)</button>
+                <button type="button" class="btn-filtro" data-categoria="carnes">Carnes y Pollo (15)</button>
+                <button type="button" class="btn-filtro" data-categoria="panaderia">Panadería y Café (15)</button>
+                <button type="button" class="btn-filtro" data-categoria="aseo">Aseo Hogar (15)</button>
+            </div>
+
+            <div id="mensaje-sin-resultados" class="alert alert-warning text-center fw-bold oculto" role="status">
+                No encontramos productos con ese nombre en esta categoría.
+            </div>
+
+            <!-- REJILLA COMPLETA DE LOS 90 PRODUCTOS -->
+            <div class="row g-3" id="lista-productos">
+                <!-- ==================== CATEGORÍA 1: ABARROTES (IDs 1 - 15) ==================== -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="1" data-categoria="abarrotes" data-nombre="Arroz Blanco Diana 1.000g" data-precio="4800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/arroz-bowl-of-rice-6335570_1920.webp" class="card-img-top" alt="Arroz Blanco Diana 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Arroz Blanco Diana 1.000g</h3><p class="fw-bold text-success mb-2">$4.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="1">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="2" data-categoria="abarrotes" data-nombre="Arroz Integral Roa 1.000g" data-precio="5400">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/arroz integral-food-6796435_1920.webp" class="card-img-top" alt="Arroz Integral Roa 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Arroz Integral Roa 1.000g</h3><p class="fw-bold text-success mb-2">$5.400</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="2">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="3" data-categoria="abarrotes" data-nombre="Frijol Bola Roja 500g" data-precio="6500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/frijol_hetto-bean-5178460_1920.webp" class="card-img-top" alt="Frijol Bola Roja 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Frijol Bola Roja 500g</h3><p class="fw-bold text-success mb-2">$6.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="3">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="4" data-categoria="abarrotes" data-nombre="Lenteja Importada Seleccionada 500g" data-precio="4200">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/lenteja-lentils-7772450_1920.webp" class="card-img-top" alt="Lenteja Importada Seleccionada 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Lenteja Importada Seleccionada 500g</h3><p class="fw-bold text-success mb-2">$4.200</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="4">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="5" data-categoria="abarrotes" data-nombre="Garbanzo Seleccionado 500g" data-precio="4900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/garbanzo-chickpeas-682617_1920.webp" class="card-img-top" alt="Garbanzo Seleccionado 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Garbanzo Seleccionado 500g</h3><p class="fw-bold text-success mb-2">$4.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="5">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="6" data-categoria="abarrotes" data-nombre="Aceite Vegetal Gourmet 1.000ml" data-precio="12900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/aceite-olive-oil-968657.webp" class="card-img-top" alt="Aceite Vegetal Gourmet 1.000ml" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Aceite Vegetal Gourmet 1.000ml</h3><p class="fw-bold text-success mb-2">$12.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="6">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="7" data-categoria="abarrotes" data-nombre="Azúcar Blanca Manuelita 1.000g" data-precio="4600">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/azucar-sugar-5040276_1920.webp" class="card-img-top" alt="Azúcar Blanca Manuelita 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Azúcar Blanca Manuelita 1.000g</h3><p class="fw-bold text-success mb-2">$4.600</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="7">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="8" data-categoria="abarrotes" data-nombre="Sal Refinada Refisal 1.000g" data-precio="2300">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/sal-salt-6728600_1920.webp" class="card-img-top" alt="Sal Refinada Refisal 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Sal Refinada Refisal 1.000g</h3><p class="fw-bold text-success mb-2">$2.300</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="8">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="9" data-categoria="abarrotes" data-nombre="Pasta Espagueti Doria 500g" data-precio="3500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/ponce_photography-pasta-1463918_1920.webp" class="card-img-top" alt="Pasta Espagueti Doria 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Pasta Espagueti Doria 500g</h3><p class="fw-bold text-success mb-2">$3.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="9">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="10" data-categoria="abarrotes" data-nombre="Harina de Maíz Blanco P.A.N. 1.000g" data-precio="4900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/arina de maiz-food-3073007_1920.webp" class="card-img-top" alt="Harina de Maíz Blanco P.A.N. 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Harina de Maíz Blanco P.A.N. 1.000g</h3><p class="fw-bold text-success mb-2">$4.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="10">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="11" data-categoria="abarrotes" data-nombre="Chocolate Corona Tradicional 500g" data-precio="13800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/chocolate-183543_1920.webp" class="card-img-top" alt="Chocolate Corona Tradicional 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Chocolate Corona Tradicional 500g</h3><p class="fw-bold text-success mb-2">$13.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="11">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="12" data-categoria="abarrotes" data-nombre="Panela Redonda Campesina x4 und" data-precio="6800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/panela.webp" class="card-img-top" alt="Panela Redonda Campesina x4 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Panela Redonda Campesina x4 und</h3><p class="fw-bold text-success mb-2">$6.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="12">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="13" data-categoria="abarrotes" data-nombre="Atún Van Camp's en Aceite 160g" data-precio="6900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/Atun-canvas-store-canned-goods-8051752.webp" class="card-img-top" alt="Atún Van Camp's en Aceite 160g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Atún Van Camp's en Aceite 160g</h3><p class="fw-bold text-success mb-2">$6.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="13">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="14" data-categoria="abarrotes" data-nombre="Salsa de Tomate Fruco 400g" data-precio="5800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/salsa de tomate.webp" class="card-img-top" alt="Salsa de Tomate Fruco 400g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Salsa de Tomate Fruco 400g</h3><p class="fw-bold text-success mb-2">$5.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="14">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="15" data-categoria="abarrotes" data-nombre="Avena en Hojuelas Quaker 500g" data-precio="5200">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/avena en hojuelas.webp" class="card-img-top" alt="Avena en Hojuelas Quaker 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-secondary mb-1">Abarrotes</span><h3 class="h6 fw-bold">Avena en Hojuelas Quaker 500g</h3><p class="fw-bold text-success mb-2">$5.200</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="15">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- ==================== CATEGORÍA 2: LÁCTEOS Y HUEVOS (IDs 16 - 30) ==================== -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="16" data-categoria="lacteos" data-nombre="Leche Entera Alquería 1L" data-precio="4900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/leche entera.webp" class="card-img-top" alt="Leche Entera Alquería 1L" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Leche Entera Alquería 1L</h3><p class="fw-bold text-success mb-2">$4.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="16">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="17" data-categoria="lacteos" data-nombre="Huevos Rojos AA Cubeta x30" data-precio="17500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/couleur-eggs-10005692.webp" class="card-img-top" alt="Huevos Rojos AA Cubeta x30" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Huevos Rojos AA Cubeta x30</h3><p class="fw-bold text-success mb-2">$17.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="17">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="18" data-categoria="lacteos" data-nombre="Queso Campesino Alpina 400g" data-precio="9800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/queso campesino.webp" class="card-img-top" alt="Queso Campesino Alpina 400g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Queso Campesino Alpina 400g</h3><p class="fw-bold text-success mb-2">$9.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="18">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="19" data-categoria="lacteos" data-nombre="Queso Doble Crema Colanta 400g" data-precio="10500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/queso doble crema.webp" class="card-img-top" alt="Queso Doble Crema Colanta 400g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Queso Doble Crema Colanta 400g</h3><p class="fw-bold text-success mb-2">$10.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="19">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="20" data-categoria="lacteos" data-nombre="Leche Deslactosada Colanta 1L" data-precio="5300">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/leche deslactosada.webp" class="card-img-top" alt="Leche Deslactosada Colanta 1L" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Leche Deslactosada Colanta 1L</h3><p class="fw-bold text-success mb-2">$5.300</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="20">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="21" data-categoria="lacteos" data-nombre="Mantequilla Alpina con Sal 250g" data-precio="8900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/mantequilla.webp" class="card-img-top" alt="Mantequilla Alpina con Sal 250g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Mantequilla Alpina con Sal 250g</h3><p class="fw-bold text-success mb-2">$8.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="21">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="22" data-categoria="lacteos" data-nombre="Yogurt Griego Alpina Natural 500g" data-precio="9400">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/yogurt griego.webp" class="card-img-top" alt="Yogurt Griego Alpina Natural 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Yogurt Griego Alpina Natural 500g</h3><p class="fw-bold text-success mb-2">$9.400</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="22">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="23" data-categoria="lacteos" data-nombre="Crema de Leche Alquería 200g" data-precio="4500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/crema de leche.webp" class="card-img-top" alt="Crema de Leche Alquería 200g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Crema de Leche Alquería 200g</h3><p class="fw-bold text-success mb-2">$4.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="23">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="24" data-categoria="lacteos" data-nombre="Kumis Alpina Tradicional 1.000g" data-precio="7600">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/kumis.webp" class="card-img-top" alt="Kumis Alpina Tradicional 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Kumis Alpina Tradicional 1.000g</h3><p class="fw-bold text-success mb-2">$7.600</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="24">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="25" data-categoria="lacteos" data-nombre="Arequipe Alpina Tradicional 250g" data-precio="6200">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/arequipe.webp" class="card-img-top" alt="Arequipe Alpina Tradicional 250g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Arequipe Alpina Tradicional 250g</h3><p class="fw-bold text-success mb-2">$6.200</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="25">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="26" data-categoria="lacteos" data-nombre="Queso Mozzarella Tajado 250g" data-precio="7800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/queso mozarela.webp" class="card-img-top" alt="Queso Mozzarella Tajado 250g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Queso Mozzarella Tajado 250g</h3><p class="fw-bold text-success mb-2">$7.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="26">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="27" data-categoria="lacteos" data-nombre="Cuajada Fresca Campesina 500g" data-precio="8400">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/cuajada.webp" class="card-img-top" alt="Cuajada Fresca Campesina 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Cuajada Fresca Campesina 500g</h3><p class="fw-bold text-success mb-2">$8.400</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="27">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="28" data-categoria="lacteos" data-nombre="Leche en Polvo Klim 380g" data-precio="14900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/leche en polvo.webp" class="card-img-top" alt="Leche en Polvo Klim 380g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Leche en Polvo Klim 380g</h3><p class="fw-bold text-success mb-2">$14.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="28">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="29" data-categoria="lacteos" data-nombre="Suero Costeño Colanta 200g" data-precio="4100">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/suero costeño.webp" class="card-img-top" alt="Suero Costeño Colanta 200g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Suero Costeño Colanta 200g</h3><p class="fw-bold text-success mb-2">$4.100</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="29">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="30" data-categoria="lacteos" data-nombre="Huevos Campesinos AAA x12 und" data-precio="9200">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/huevos campesinos.webp" class="card-img-top" alt="Huevos Campesinos AAA x12 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-info text-dark mb-1">Lácteos y Huevos</span><h3 class="h6 fw-bold">Huevos Campesinos AAA x12 und</h3><p class="fw-bold text-success mb-2">$9.200</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="30">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- ==================== CATEGORÍA 3: FRUTAS Y VERDURAS (IDs 31 - 45) ==================== -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="31" data-categoria="frutas" data-nombre="Papa Criolla Lavada 1.000g" data-precio="5600">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/papa pastusa-gnocchi-3190639.jpg" class="card-img-top" alt="Papa Criolla Lavada 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Papa Criolla Lavada 1.000g</h3><p class="fw-bold text-success mb-2">$5.600</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="31">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="32" data-categoria="frutas" data-nombre="Papa Pastusa Sabanera 2.500g" data-precio="7500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/papa sabanera.jpg" class="card-img-top" alt="Papa Pastusa Sabanera 2.500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Papa Pastusa Sabanera 2.500g</h3><p class="fw-bold text-success mb-2">$7.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="32">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="33" data-categoria="frutas" data-nombre="Plátano Hartón Maduro 1.000g" data-precio="3800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/platano.jpg" class="card-img-top" alt="Plátano Hartón Maduro 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Plátano Hartón Maduro 1.000g</h3><p class="fw-bold text-success mb-2">$3.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="33">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="34" data-categoria="frutas" data-nombre="Banano Criollo Fresco 1.000g" data-precio="3200">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/banano.jpg" class="card-img-top" alt="Banano Criollo Fresco 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Banano Criollo Fresco 1.000g</h3><p class="fw-bold text-success mb-2">$3.200</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="34">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="35" data-categoria="frutas" data-nombre="Aguacate Hass Maduro x3 und" data-precio="6900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/aguacate.jpg" class="card-img-top" alt="Aguacate Hass Maduro x3 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Aguacate Hass Maduro x3 und</h3><p class="fw-bold text-success mb-2">$6.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="35">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="36" data-categoria="frutas" data-nombre="Tomate Chonto Fresco 1.000g" data-precio="4400">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/tomate chonto.jpg" class="card-img-top" alt="Tomate Chonto Fresco 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Tomate Chonto Fresco 1.000g</h3><p class="fw-bold text-success mb-2">$4.400</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="36">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="37" data-categoria="frutas" data-nombre="Cebolla Cabezona Blanca 1.000g" data-precio="3600">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/cebolla.jpg" class="card-img-top" alt="Cebolla Cabezona Blanca 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Cebolla Cabezona Blanca 1.000g</h3><p class="fw-bold text-success mb-2">$3.600</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="37">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="38" data-categoria="frutas" data-nombre="Cebolla Larga Junca Aquitania 500g" data-precio="2900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/cebolla larga.jpg" class="card-img-top" alt="Cebolla Larga Junca Aquitania 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Cebolla Larga Junca Aquitania 500g</h3><p class="fw-bold text-success mb-2">$2.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="38">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="39" data-categoria="frutas" data-nombre="Zanahoria Seleccionada 1.000g" data-precio="3100">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/zanahoria.jpg" class="card-img-top" alt="Zanahoria Seleccionada 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Zanahoria Seleccionada 1.000g</h3><p class="fw-bold text-success mb-2">$3.100</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="39">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="40" data-categoria="frutas" data-nombre="Yuca Armenia Pelada Empacada 1.000g" data-precio="4500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/yuca.jpg" class="card-img-top" alt="Yuca Armenia Pelada Empacada 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Yuca Armenia Pelada Empacada 1.000g</h3><p class="fw-bold text-success mb-2">$4.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="40">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="41" data-categoria="frutas" data-nombre="Limón Tahití Jugoso 1.000g" data-precio="4200">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/limon.jpg" class="card-img-top" alt="Limón Tahití Jugoso 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Limón Tahití Jugoso 1.000g</h3><p class="fw-bold text-success mb-2">$4.200</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="41">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="42" data-categoria="frutas" data-nombre="Naranja Valencia para Jugo 2.000g" data-precio="5400">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/naranja.jpg" class="card-img-top" alt="Naranja Valencia para Jugo 2.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Naranja Valencia para Jugo 2.000g</h3><p class="fw-bold text-success mb-2">$5.400</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="42">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="43" data-categoria="frutas" data-nombre="Mango Tommy Maduro 1.000g" data-precio="4900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/mango.jpg" class="card-img-top" alt="Mango Tommy Maduro 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Mango Tommy Maduro 1.000g</h3><p class="fw-bold text-success mb-2">$4.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="43">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="44" data-categoria="frutas" data-nombre="Papaya Maradol Dulce Unidad" data-precio="6400">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/papaya.jpg" class="card-img-top" alt="Papaya Maradol Dulce Unidad" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Papaya Maradol Dulce Unidad</h3><p class="fw-bold text-success mb-2">$6.400</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="44">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="45" data-categoria="frutas" data-nombre="Mazorca Dulce Desgranada 500g" data-precio="5200">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/mazorca.jpg" class="card-img-top" alt="Mazorca Dulce Desgranada 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-success mb-1">Frutas y Verduras</span><h3 class="h6 fw-bold">Mazorca Dulce Desgranada 500g</h3><p class="fw-bold text-success mb-2">$5.200</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="45">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- ==================== CATEGORÍA 4: CARNES Y POLLO (IDs 46 - 60) ==================== -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="46" data-categoria="carnes" data-nombre="Pechuga de Pollo Fresca 1.000g" data-precio="16800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/pechuga de pollo.jpg" class="card-img-top" alt="Pechuga de Pollo Fresca 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Pechuga de Pollo Fresca 1.000g</h3><p class="fw-bold text-success mb-2">$16.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="46">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="47" data-categoria="carnes" data-nombre="Carne Molida de Res Magra 500g" data-precio="12900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/carne molida.jpg" class="card-img-top" alt="Carne Molida de Res Magra 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Carne Molida de Res Magra 500g</h3><p class="fw-bold text-success mb-2">$12.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="47">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="48" data-categoria="carnes" data-nombre="Sobrebarriga de Res Nacional 1.000g" data-precio="22500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/sobre barriga.jpg" class="card-img-top" alt="Sobrebarriga de Res Nacional 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Sobrebarriga de Res Nacional 1.000g</h3><p class="fw-bold text-success mb-2">$22.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="48">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="49" data-categoria="carnes" data-nombre="Lomo de Cerdo Fresco 500g" data-precio="11400">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/lomo de cerdo.jpg" class="card-img-top" alt="Lomo de Cerdo Fresco 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Lomo de Cerdo Fresco 500g</h3><p class="fw-bold text-success mb-2">$11.400</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="49">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="50" data-categoria="carnes" data-nombre="Costilla de Cerdo Carnuda 1.000g" data-precio="19800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/costilla de cerdo.jpg" class="card-img-top" alt="Costilla de Cerdo Carnuda 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Costilla de Cerdo Carnuda 1.000g</h3><p class="fw-bold text-success mb-2">$19.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="50">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="51" data-categoria="carnes" data-nombre="Pierna Pernil de Pollo 1.000g" data-precio="11900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/pierna pernil.jpg" class="card-img-top" alt="Pierna Pernil de Pollo 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Pierna Pernil de Pollo 1.000g</h3><p class="fw-bold text-success mb-2">$11.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="51">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="52" data-categoria="carnes" data-nombre="Chorizo Santarrosano x5 und" data-precio="13500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/chorizo.jpg" class="card-img-top" alt="Chorizo Santarrosano x5 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Chorizo Santarrosano x5 und</h3><p class="fw-bold text-success mb-2">$13.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="52">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="53" data-categoria="carnes" data-nombre="Chicharrón Carnudo de Cerdo 500g" data-precio="12400">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/chicharron.jpg" class="card-img-top" alt="Chicharrón Carnudo de Cerdo 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Chicharrón Carnudo de Cerdo 500g</h3><p class="fw-bold text-success mb-2">$12.400</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="53">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="54" data-categoria="carnes" data-nombre="Salchicha Ranchera Zenú x8 und" data-precio="11200">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/salchicha ranchera.jpg" class="card-img-top" alt="Salchicha Ranchera Zenú x8 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Salchicha Ranchera Zenú x8 und</h3><p class="fw-bold text-success mb-2">$11.200</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="54">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="55" data-categoria="carnes" data-nombre="Jamón de Cerdo Pietrán 250g" data-precio="8900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/jamon.jpg" class="card-img-top" alt="Jamón de Cerdo Pietrán 250g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Jamón de Cerdo Pietrán 250g</h3><p class="fw-bold text-success mb-2">$8.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="55">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="56" data-categoria="carnes" data-nombre="Filete de Tilapia Roja 500g" data-precio="14600">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/filete de tilapia roja.jpg" class="card-img-top" alt="Filete de Tilapia Roja 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Filete de Tilapia Roja 500g</h3><p class="fw-bold text-success mb-2">$14.600</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="56">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="57" data-categoria="carnes" data-nombre="Alas de Pollo Colombina 1.000g" data-precio="10800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/alas de pollo.jpg" class="card-img-top" alt="Alas de Pollo Colombina 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Alas de Pollo Colombina 1.000g</h3><p class="fw-bold text-success mb-2">$10.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="57">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="58" data-categoria="carnes" data-nombre="Carne para Asar Chatas 500g" data-precio="16500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/carne para azar.jpg" class="card-img-top" alt="Carne para Asar Chatas 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Carne para Asar Chatas 500g</h3><p class="fw-bold text-success mb-2">$16.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="58">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="59" data-categoria="carnes" data-nombre="Mortadela Tradicional Rica 450g" data-precio="6900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/mortadela.jpg" class="card-img-top" alt="Mortadela Tradicional Rica 450g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Mortadela Tradicional Rica 450g</h3><p class="fw-bold text-success mb-2">$6.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="59">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="60" data-categoria="carnes" data-nombre="Nuggets de Pollo Zenú 400g" data-precio="12800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/nuggets.jpg" class="card-img-top" alt="Nuggets de Pollo Zenú 400g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-danger mb-1">Carnes y Pollo</span><h3 class="h6 fw-bold">Nuggets de Pollo Zenú 400g</h3><p class="fw-bold text-success mb-2">$12.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="60">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- ==================== CATEGORÍA 5: PANADERÍA Y CAFÉ (IDs 61 - 75) ==================== -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="61" data-categoria="panaderia" data-nombre="Café Sello Rojo Molido 500g" data-precio="14200">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/cafe sello rojo.jpg" class="card-img-top" alt="Café Sello Rojo Molido 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Café Sello Rojo Molido 500g</h3><p class="fw-bold text-success mb-2">$14.200</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="61">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="62" data-categoria="panaderia" data-nombre="Café Juan Valdez Colina 454g" data-precio="26900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/cafe juan valdez.jpg" class="card-img-top" alt="Café Juan Valdez Colina 454g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Café Juan Valdez Colina 454g</h3><p class="fw-bold text-success mb-2">$26.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="62">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="63" data-categoria="panaderia" data-nombre="Pan Tajado Blanco Bimbo 600g" data-precio="6800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/pan tajado.jpg" class="card-img-top" alt="Pan Tajado Blanco Bimbo 600g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Pan Tajado Blanco Bimbo 600g</h3><p class="fw-bold text-success mb-2">$6.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="63">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="64" data-categoria="panaderia" data-nombre="Ponqué Chocoramo Tradicional x5 und" data-precio="11500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/chocorramo.jpg" class="card-img-top" alt="Ponqué Chocoramo Tradicional x5 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Ponqué Chocoramo Tradicional x5 und</h3><p class="fw-bold text-success mb-2">$11.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="64">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="65" data-categoria="panaderia" data-nombre="Galletas Saltín Noel Tradicional x3 tacos" data-precio="5900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/galletas saltin.jpg" class="card-img-top" alt="Galletas Saltín Noel Tradicional x3 tacos" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Galletas Saltín Noel Tradicional x3 tacos</h3><p class="fw-bold text-success mb-2">$5.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="65">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="66" data-categoria="panaderia" data-nombre="Arepas de Maíz Blanco Delgadas x10 und" data-precio="4800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/arepas blancas.jpg" class="card-img-top" alt="Arepas de Maíz Blanco Delgadas x10 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Arepas de Maíz Blanco Delgadas x10 und</h3><p class="fw-bold text-success mb-2">$4.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="66">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="67" data-categoria="panaderia" data-nombre="Arepas con Queso Campesino x5 und" data-precio="6900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/arepas con queso.jpg" class="card-img-top" alt="Arepas con Queso Campesino x5 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Arepas con Queso Campesino x5 und</h3><p class="fw-bold text-success mb-2">$6.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="67">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="68" data-categoria="panaderia" data-nombre="Almojábanas Horneadas x6 und" data-precio="7500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/almojabanas.jpg" class="card-img-top" alt="Almojábanas Horneadas x6 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Almojábanas Horneadas x6 und</h3><p class="fw-bold text-success mb-2">$7.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="68">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="69" data-categoria="panaderia" data-nombre="Pandebonos Vallunos Horneados x6 und" data-precio="7800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/pan de bono.jpg" class="card-img-top" alt="Pandebonos Vallunos Horneados x6 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Pandebonos Vallunos Horneados x6 und</h3><p class="fw-bold text-success mb-2">$7.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="69">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="70" data-categoria="panaderia" data-nombre="Achiras del Huila Horneadas 200g" data-precio="6400">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/achiras.jpg" class="card-img-top" alt="Achiras del Huila Horneadas 200g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Achiras del Huila Horneadas 200g</h3><p class="fw-bold text-success mb-2">$6.400</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="70">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="71" data-categoria="panaderia" data-nombre="Tostadas Integrales Bimbo 300g" data-precio="5500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/tostadas.jpg" class="card-img-top" alt="Tostadas Integrales Bimbo 300g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Tostadas Integrales Bimbo 300g</h3><p class="fw-bold text-success mb-2">$5.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="71">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="72" data-categoria="panaderia" data-nombre="Galletas Ducales Noel 294g" data-precio="6100">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/galletas ducales.jpg" class="card-img-top" alt="Galletas Ducales Noel 294g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Galletas Ducales Noel 294g</h3><p class="fw-bold text-success mb-2">$6.100</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="72">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="73" data-categoria="panaderia" data-nombre="Café Instantáneo Colcafé 170g" data-precio="15800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/cafe instantaneo.jpg" class="card-img-top" alt="Café Instantáneo Colcafé 170g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Café Instantáneo Colcafé 170g</h3><p class="fw-bold text-success mb-2">$15.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="73">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="74" data-categoria="panaderia" data-nombre="Ponqué Gala Ramo Vainilla x5 und" data-precio="8200">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/ponque gala.jpg" class="card-img-top" alt="Ponqué Gala Ramo Vainilla x5 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Ponqué Gala Ramo Vainilla x5 und</h3><p class="fw-bold text-success mb-2">$8.200</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="74">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="75" data-categoria="panaderia" data-nombre="Pan Integral Artesanal Comapan 500g" data-precio="6400">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/pan integral.jpg" class="card-img-top" alt="Pan Integral Artesanal Comapan 500g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-warning text-dark mb-1">Panadería y Café</span><h3 class="h6 fw-bold">Pan Integral Artesanal Comapan 500g</h3><p class="fw-bold text-success mb-2">$6.400</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="75">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- ==================== CATEGORÍA 6: ASEO HOGAR (IDs 76 - 90) ==================== -->
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="76" data-categoria="aseo" data-nombre="Detergente Líquido Ariel 2.000ml" data-precio="24900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/detergente liquido.jpg" class="card-img-top" alt="Detergente Líquido Ariel 2.000ml" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Detergente Líquido Ariel 2.000ml</h3><p class="fw-bold text-success mb-2">$24.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="76">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="77" data-categoria="aseo" data-nombre="Detergente en Polvo Fab Floral 1.000g" data-precio="9800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/detergente en polvo.jpg" class="card-img-top" alt="Detergente en Polvo Fab Floral 1.000g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Detergente en Polvo Fab Floral 1.000g</h3><p class="fw-bold text-success mb-2">$9.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="77">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="78" data-categoria="aseo" data-nombre="Suavizante Suavitel Primavera 1.500ml" data-precio="12400">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/suavizante.jpg" class="card-img-top" alt="Suavizante Suavitel Primavera 1.500ml" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Suavizante Suavitel Primavera 1.500ml</h3><p class="fw-bold text-success mb-2">$12.400</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="78">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="79" data-categoria="aseo" data-nombre="Blanqueador Clorox Ropa Blanca 2.000ml" data-precio="7900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/blanqueador.jpg" class="card-img-top" alt="Blanqueador Clorox Ropa Blanca 2.000ml" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Blanqueador Clorox Ropa Blanca 2.000ml</h3><p class="fw-bold text-success mb-2">$7.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="79">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="80" data-categoria="aseo" data-nombre="Lavaloza Líquido Axión Limón 750ml" data-precio="7400">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/lavaloza.jpg" class="card-img-top" alt="Lavaloza Líquido Axión Limón 750ml" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Lavaloza Líquido Axión Limón 750ml</h3><p class="fw-bold text-success mb-2">$7.400</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="80">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="81" data-categoria="aseo" data-nombre="Papel Higiénico Familia Triple Hoja x12" data-precio="21500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/papel higienico.jpg" class="card-img-top" alt="Papel Higiénico Familia Triple Hoja x12" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Papel Higiénico Familia Triple Hoja x12</h3><p class="fw-bold text-success mb-2">$21.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="81">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="82" data-categoria="aseo" data-nombre="Toallas de Cocina Familia Acolchamax x3" data-precio="11200">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/toallas para cocina.jpg" class="card-img-top" alt="Toallas de Cocina Familia Acolchamax x3" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Toallas de Cocina Familia Acolchamax x3</h3><p class="fw-bold text-success mb-2">$11.200</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="82">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="83" data-categoria="aseo" data-nombre="Limpiador Pisos Fabuloso Lavanda 2.000ml" data-precio="8900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/Limpia pisos.jpg" class="card-img-top" alt="Limpiador Pisos Fabuloso Lavanda 2.000ml" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Limpiador Pisos Fabuloso Lavanda 2.000ml</h3><p class="fw-bold text-success mb-2">$8.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="83">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="84" data-categoria="aseo" data-nombre="Jabón en Barra Rey Multiusos x3 und" data-precio="7600">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/jabon rey.jpg" class="card-img-top" alt="Jabón en Barra Rey Multiusos x3 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Jabón en Barra Rey Multiusos x3 und</h3><p class="fw-bold text-success mb-2">$7.600</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="84">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="85" data-categoria="aseo" data-nombre="Bolsas de Basura Biodegradables x30 und" data-precio="6500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/bolsa de basura.jpg" class="card-img-top" alt="Bolsas de Basura Biodegradables x30 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Bolsas de Basura Biodegradables x30 und</h3><p class="fw-bold text-success mb-2">$6.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="85">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="86" data-categoria="aseo" data-nombre="Esponja Doble Uso Scotch-Brite x3 und" data-precio="4900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/esponja.jpg" class="card-img-top" alt="Esponja Doble Uso Scotch-Brite x3 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Esponja Doble Uso Scotch-Brite x3 und</h3><p class="fw-bold text-success mb-2">$4.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="86">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="87" data-categoria="aseo" data-nombre="Escoba Suave Hogar con Cabo Metálico" data-precio="11800">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/escoba.jpg" class="card-img-top" alt="Escoba Suave Hogar con Cabo Metálico" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Escoba Suave Hogar con Cabo Metálico</h3><p class="fw-bold text-success mb-2">$11.800</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="87">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="88" data-categoria="aseo" data-nombre="Trapero de Microfibra Absorbente" data-precio="13500">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/trapero.jpg" class="card-img-top" alt="Trapero de Microfibra Absorbente" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Trapero de Microfibra Absorbente</h3><p class="fw-bold text-success mb-2">$13.500</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="88">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="89" data-categoria="aseo" data-nombre="Desinfectante Lysol Aerosol 354g" data-precio="18900">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/desinfectante.jpg" class="card-img-top" alt="Desinfectante Lysol Aerosol 354g" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Desinfectante Lysol Aerosol 354g</h3><p class="fw-bold text-success mb-2">$18.900</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="89">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 item-producto" data-id="90" data-categoria="aseo" data-nombre="Servilletas Familia Acolchadas x150 und" data-precio="4300">
+                    <article class="card h-100 caja-seccion">
+                        <img src="Imagenes/servilletas.png" class="card-img-top" alt="Servilletas Familia Acolchadas x150 und" width="300" height="200">
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div><span class="badge bg-primary mb-1">Aseo Hogar</span><h3 class="h6 fw-bold">Servilletas Familia Acolchadas x150 und</h3><p class="fw-bold text-success mb-2">$4.300</p></div>
+                            <button type="button" class="btn btn-success btn-sm w-100 fw-bold btn-agregar-carrito" data-id="90">Agregar al carrito</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== VISTA 4: RECETAS COLOMBIANAS ==================== -->
+        <div id="vista-recetas" class="landing-page oculto">
+            <section class="caja-seccion p-4 mb-4 rounded-3">
+                <span class="badge bg-success mb-2">Cocina Tradicional Colombiana</span>
+                <h2 class="h3 fw-bold titulo-rojo mb-2">Recetas Familiares con Ingredientes de Cooratiendas</h2>
+                <p class="mb-0">Elige una receta típica y agrega automáticamente todos sus ingredientes frescos a tu carrito de compras.</p>
+            </section>
+
+            <div class="row g-4">
+                <!-- Receta 1: Ajiaco Santafereño -->
+                <div class="col-md-4">
+                    <article class="card h-100 caja-seccion">
+                        <picture>
+                            <source srcset="Imagenes/ajiaco-pumpkin-soup-4508015.webp" type="image/webp">
+                            <img src="Imagenes/ajiaco-pumpkin-soup-4508015.jpg" alt="Plato de Ajiaco Santafereño colombiano" width="400" height="200" class="card-img-top img-receta">
+                        </picture>
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <span class="badge bg-warning text-dark mb-2">4 Porciones · 45 min</span>
+                                <h3 class="h5 fw-bold titulo-rojo">Ajiaco Santafereño</h3>
+                                <p class="small text-muted">Ingredientes incluidos del catálogo:</p>
+                                <ul class="small ps-3">
+                                    <li>Pechuga de Pollo Fresca 1.000g</li>
+                                    <li>Papa Criolla Lavada 1.000g</li>
+                                    <li>Papa Pastusa Sabanera 2.500g</li>
+                                    <li>Crema de Leche Alquería 200g</li>
+                                    <li>Aguacate Hass Maduro x3 und</li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn btn-success w-100 fw-bold btn-agregar-receta" data-ids="46,31,32,23,35" data-nombre-receta="Ajiaco Santafereño">
+                                Agregar 5 ingredientes al carrito
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Receta 2: Bandeja Paisa Tradicional -->
+                <div class="col-md-4">
+                    <article class="card h-100 caja-seccion">
+                        <picture>
+                            <source srcset="Imagenes/bandeja-paisa-bacon-6069739.webp" type="image/webp">
+                            <img src="Imagenes/bandeja-paisa-bacon-6069739.jpg" alt="Bandeja Paisa tradicional colombiana" width="400" height="200" class="card-img-top img-receta">
+                        </picture>
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <span class="badge bg-warning text-dark mb-2">4 Porciones · 60 min</span>
+                                <h3 class="h5 fw-bold titulo-rojo">Bandeja Paisa Completa</h3>
+                                <p class="small text-muted">Ingredientes incluidos del catálogo:</p>
+                                <ul class="small ps-3">
+                                    <li>Frijol Bola Roja 500g</li>
+                                    <li>Arroz Blanco Diana 1.000g</li>
+                                    <li>Carne Molida de Res Magra 500g</li>
+                                    <li>Chorizo Santarrosano x5 und</li>
+                                    <li>Plátano Hartón Maduro 1.000g</li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn btn-success w-100 fw-bold btn-agregar-receta" data-ids="3,1,47,52,33" data-nombre-receta="Bandeja Paisa">
+                                Agregar 5 ingredientes al carrito
+                            </button>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Receta 3: Desayuno Campesino Colombiano -->
+                <div class="col-md-4">
+                    <article class="card h-100 caja-seccion">
+                        <picture>
+                            <source srcset="Imagenes/desayuno santafereño-breakfast-6526807.webp" type="image/webp">
+                            <img src="Imagenes/desayuno santafereño-breakfast-6526807.jpg" alt="Desayuno campesino con chocolate, queso y almojábanas" width="400" height="200" class="card-img-top img-receta">
+                        </picture>
+                        <div class="card-body d-flex flex-column justify-content-between">
+                            <div>
+                                <span class="badge bg-warning text-dark mb-2">6 Porciones · 20 min</span>
+                                <h3 class="h5 fw-bold titulo-rojo">Desayuno Santafereño</h3>
+                                <p class="small text-muted">Ingredientes incluidos del catálogo:</p>
+                                <ul class="small ps-3">
+                                    <li>Chocolate Corona Tradicional 500g</li>
+                                    <li>Leche Entera Alquería 1L</li>
+                                    <li>Queso Campesino Alpina 400g</li>
+                                    <li>Almojábanas Horneadas x6 und</li>
+                                    <li>Huevos Rojos AA Cubeta x30</li>
+                                </ul>
+                            </div>
+                            <button type="button" class="btn btn-success w-100 fw-bold btn-agregar-receta" data-ids="11,16,18,68,17" data-nombre-receta="Desayuno Santafereño">
+                                Agregar 5 ingredientes al carrito
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== VISTA 5: CONÓCENOS ==================== -->
+        <div id="vista-conocenos" class="landing-page oculto">
+            <section class="caja-seccion p-4 p-md-5 rounded-3">
+                <div class="mb-4">
+                    <span class="badge bg-warning text-dark mb-2">Nuestra Historia</span>
+                    <h2 class="h3 fw-bold titulo-rojo mb-3">Historia de Cooratiendas (Fundada en 1986)</h2>
+                    <p><strong>Cooratiendas</strong> nació en el año <strong>1986</strong> en <strong>Bogotá, Colombia</strong>, cuando un grupo de comerciantes detallistas y tenderos de barrio se unieron para competir frente a las grandes cadenas de supermercados.</p>
+                    <p>Mediante compras conjuntas directas a fabricantes y agricultores colombianos, lograron eliminar intermediarios y llevar productos de primera necesidad a precios justos a miles de hogares en Bogotá, Cundinamarca y todo el país.</p>
+                </div>
+
+                <figure class="text-center mb-4">
+                    <video controls width="800" height="450" poster="" preload="metadata" class="w-100 rounded-3" style="max-width: 800px;" id="video-institucional">
+                        <source src="media/gemini_generated_video_02e5b4a6.mp4" type="video/mp4">
+                        <track src="media/subtitulos-es.vtt" kind="subtitles" srclang="es" label="Español" default>
+                        <track src="media/subtitulos-en.vtt" kind="subtitles" srclang="en" label="English">
+                        Tu navegador no soporta video HTML5.
+                    </video>
+                    <figcaption class="mt-2 small"><strong>Video Institucional:</strong> Más de 39 años de economía solidaria en Colombia.</figcaption>
+                </figure>
+
+                <div class="row g-3">
+                    <div class="col-md-4"><article class="card h-100 tarjeta-mvv"><div class="card-body"><h3 class="h5 fw-bold titulo-rojo">Misión</h3><p class="card-text">Fortalecer el comercio detallista colombiano mediante un modelo cooperativo eficiente, abasteciendo a las familias con productos frescos y de calidad a precios justos.</p></div></article></div>
+                    <div class="col-md-4"><article class="card h-100 tarjeta-mvv"><div class="card-body"><h3 class="h5 fw-bold titulo-rojo">Visión</h3><p class="card-text">Consolidarnos como la red cooperativa de supermercados líder y más cercana de Colombia, reconocida por su innovación digital accesible y apoyo al agro nacional.</p></div></article></div>
+                    <div class="col-md-4"><article class="card h-100 tarjeta-mvv"><div class="card-body"><h3 class="h5 fw-bold titulo-rojo">Valores</h3><ul class="ps-3 mb-0"><li><strong>Solidaridad:</strong> Apoyamos al tendero local.</li><li><strong>Equidad:</strong> Precios justos siempre.</li><li><strong>Inclusión:</strong> Espacios accesibles para todos.</li><li><strong>Calidad:</strong> Frescura del campo a tu mesa.</li></ul></div></article></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== VISTA 6: SEDES Y FORMULARIO PQRS ==================== -->
+        <div id="vista-sedes" class="landing-page oculto">
+            <section class="caja-seccion p-4 rounded-3 mb-4">
+                <div class="row align-items-center g-2 mb-3">
+                    <div class="col-md-7"><h2 class="h4 fw-bold titulo-rojo mb-1">Sedes Principales y Horarios Accesibles</h2><p class="mb-0 small">Tiendas con rampas de acceso, pasillos amplios y cajas preferenciales.</p></div>
+                    <div class="col-md-5"><label for="filtro-sedes" class="visually-hidden">Filtrar sedes</label><input type="search" id="filtro-sedes" class="form-control form-control-sm" placeholder="Filtrar sede (Ej: Kennedy, Soacha)..."></div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover align-middle tabla-datos" id="tabla-sedes">
+                        <caption class="caption-top fw-bold">Tabla 1. Puntos de venta principales en Colombia</caption>
+                        <thead class="table-danger"><tr><th scope="col">Ciudad / Zona</th><th scope="col">Sede</th><th scope="col">Dirección</th><th scope="col">Horario</th><th scope="col">Accesibilidad</th></tr></thead>
+                        <tbody>
+                            <tr><th scope="row">Bogotá D.C.</th><td>Central de Abastos (Corabastos)</td><td>Av. Carrera 80 # 2-51, Bodega Cooperativa</td><td>Lun - Dom: 6:00 a.m. - 8:00 p.m.</td><td>Rampa y baño adaptado</td></tr>
+                            <tr><th scope="row">Bogotá D.C.</th><td>Sede Kennedy - Las Américas</td><td>Calle 38 Sur # 78H-15</td><td>Lun - Dom: 7:00 a.m. - 9:00 p.m.</td><td>Acceso nivelado y caja preferencial</td></tr>
+                            <tr><th scope="row">Cundinamarca</th><td>Sede Soacha Centro</td><td>Carrera 7 # 14-32</td><td>Lun - Sáb: 7:00 a.m. - 8:30 p.m.</td><td>Rampa y señalización Braille</td></tr>
+                        </tbody>
+                        <tfoot><tr class="table-warning"><td colspan="5"><strong>Más de 450 supermercados afiliados en toda Colombia.</strong></td></tr></tfoot>
+                    </table>
+                </div>
+            </section>
+
+            <section class="caja-seccion p-4 rounded-3">
+                <h2 class="h4 fw-bold titulo-rojo mb-3">Atención al Cliente y PQRS</h2>
+                <form id="form-pqrs" class="row g-3">
+                    <div class="col-md-6"><label for="nombre-cliente" class="form-label fw-bold">Nombre completo *:</label><input type="text" id="nombre-cliente" class="form-control" required placeholder="Ej: Camilo Andrés Gómez"></div>
+                    <div class="col-md-6"><label for="correo-cliente" class="form-label fw-bold">Correo electrónico *:</label><input type="email" id="correo-cliente" class="form-control" required placeholder="camilo@ejemplo.com"></div>
+                    <div class="col-12"><label for="tipo-solicitud" class="form-label fw-bold">Tipo de solicitud *:</label><select id="tipo-solicitud" class="form-select"><option value="peticion">Petición</option><option value="queja">Queja</option><option value="reclamo">Reclamo</option><option value="sugerencia">Sugerencia</option></select></div>
+                    <div class="col-12"><label for="mensaje-cliente" class="form-label fw-bold">Mensaje *:</label><textarea id="mensaje-cliente" class="form-control" rows="4" required placeholder="Escribe tu mensaje aquí..."></textarea></div>
+                    <div class="col-12"><div class="form-check"><input class="form-check-input" type="checkbox" id="acepto-datos" required><label class="form-check-label small" for="acepto-datos">Autorizo el tratamiento de mis datos personales únicamente para dar respuesta a esta solicitud PQRS, conforme a la <strong>Ley 1581 de 2012</strong>.</label></div></div>
+                    <div class="col-12"><button type="submit" class="btn btn-success">Enviar Solicitud</button></div>
+                </form>
+            </section>
+        </div>
+
+        <!-- ==================== VISTA 7: REGISTRO DE USUARIOS Y CUENTA ==================== -->
+        <div id="vista-registro" class="landing-page oculto">
+
+            <section id="panel-usuario-activo" class="caja-seccion p-4 mb-4 rounded-3 oculto">
+                <div class="row align-items-center g-3">
+                    <div class="col-md-8">
+                        <span class="badge bg-success mb-2">SOCIO ACTIVO · 5% DESCUENTO APLICADO</span>
+                        <h2 class="h4 fw-bold titulo-rojo mb-1">Bienvenido(a), <span id="perfil-nombre">Usuario</span></h2>
+                        <p class="small mb-1"><strong>Correo:</strong> <span id="perfil-correo"></span> | <strong>Ciudad:</strong> <span id="perfil-ciudad"></span></p>
+                        <p class="small mb-0 text-success fw-bold">Tu cuenta tiene activo un 5% de descuento cooperativo automático en el total de tu carrito.</p>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <button type="button" id="btn-cerrar-sesion" class="btn btn-outline-danger fw-bold">Cerrar Sesión</button>
+                    </div>
+                </div>
+            </section>
+
+            <div id="contenedor-formularios-auth" class="row g-4">
+                <div class="col-lg-7">
+                    <section class="caja-seccion p-4 rounded-3 h-100">
+                        <span class="badge bg-warning text-dark mb-2">Nuevo Usuario · Registro Gratuito</span>
+                        <h2 class="h4 fw-bold titulo-rojo mb-2">Crear Cuenta en Cooratiendas</h2>
+                        <p class="small text-muted mb-3">Regístrate como cliente hogar o tendero asociado para obtener <strong>5% de descuento adicional</strong> en tus pedidos y guardar tus datos de entrega.</p>
+
+                        <form id="form-registro-usuario" class="row g-3">
+                            <div class="col-md-6">
+                                <label for="reg-nombre" class="form-label fw-bold">Nombre completo *:</label>
+                                <input type="text" id="reg-nombre" class="form-control" required placeholder="Ej: Laura Camila Rodríguez">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="reg-documento" class="form-label fw-bold">Cédula / NIT *:</label>
+                                <input type="text" id="reg-documento" class="form-control" required placeholder="Ej: 1015432890">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="reg-correo" class="form-label fw-bold">Correo electrónico *:</label>
+                                <input type="email" id="reg-correo" class="form-control" required placeholder="laura@correo.com">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="reg-telefono" class="form-label fw-bold">Teléfono / WhatsApp *:</label>
+                                <input type="tel" id="reg-telefono" class="form-control" required placeholder="Ej: 3104567890">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="reg-ciudad" class="form-label fw-bold">Ciudad / Municipio *:</label>
+                                <select id="reg-ciudad" class="form-select" required>
+                                    <option value="Bogotá D.C.">Bogotá D.C.</option>
+                                    <option value="Soacha">Soacha</option>
+                                    <option value="Chía">Chía</option>
+                                    <option value="Zipaquirá">Zipaquirá</option>
+                                    <option value="Facatativá">Facatativá</option>
+                                    <option value="Otra ciudad de Colombia">Otra ciudad de Colombia</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="reg-tipo" class="form-label fw-bold">Tipo de cuenta *:</label>
+                                <select id="reg-tipo" class="form-select" required>
+                                    <option value="Cliente Hogar">Cliente Hogar (Mercado familiar)</option>
+                                    <option value="Tendero Asociado">Tendero / Comerciante de Barrio</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="reg-clave" class="form-label fw-bold">Crear contraseña (mínimo 6 caracteres) *:</label>
+                                <input type="password" id="reg-clave" class="form-control" minlength="6" required placeholder="Ingresa una contraseña segura">
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="reg-habeas-data" required>
+                                    <label class="form-check-label small" for="reg-habeas-data">
+                                        Acepto la política de tratamiento de datos personales conforme a la <strong>Ley 1581 de 2012</strong> para gestionar mi cuenta y pedidos en Cooratiendas.
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-success w-100 fw-bold">Registrarme y Activar 5% de Descuento</button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+
+                <div class="col-lg-5">
+                    <section class="caja-seccion p-4 rounded-3 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <span class="badge bg-secondary mb-2">¿Ya tienes cuenta?</span>
+                            <h2 class="h4 fw-bold titulo-rojo mb-2">Iniciar Sesión</h2>
+                            <p class="small text-muted mb-3">Ingresa con tu correo registrado para activar tu descuento cooperativo.</p>
+
+                            <form id="form-login-usuario" class="row g-3">
+                                <div class="col-12">
+                                    <label for="login-correo" class="form-label fw-bold">Correo electrónico *:</label>
+                                    <input type="email" id="login-correo" class="form-control" required placeholder="tu-correo@ejemplo.com">
+                                </div>
+                                <div class="col-12">
+                                    <label for="login-clave" class="form-label fw-bold">Contraseña *:</label>
+                                    <input type="password" id="login-clave" class="form-control" required placeholder="Tu contraseña">
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary w-100 fw-bold">Ingresar a mi Cuenta</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="caja-envio-gratis p-3 rounded-3 mt-4">
+                            <p class="small fw-bold mb-1">Usuarios registrados en este navegador: <span id="total-usuarios-reg" class="text-success">0</span></p>
+                            <p class="small text-muted mb-0">Tus datos se almacenan localmente en tu dispositivo con validación de seguridad.</p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ==================== 5. PIE DE PÁGINA ==================== -->
+    <footer class="pie-pagina text-center text-white">
+        <p class="mb-1"><strong>Cooratiendas Colombia</strong> · Cooperativa fundada en 1986 · Bogotá D.C.</p>
+        <p class="mb-1 small">Línea de atención: (601) 555 0190 · WhatsApp: +57 312 426 1632 · &copy; 2026 Todos los derechos reservados.</p>
+        <p class="mb-0 small text-warning">Sitio desarrollado bajo estándares W3C HTML5/CSS3, WCAG 2.2 AA, Ley 1581 de 2012 y Ley 1480 de 2011.</p>
+    </footer>
+
+    <!-- ==================== 6. CHATBOT CONECTADO A WHATSAPP (+57 312 4261632) ==================== -->
+    <div class="widget-chatbot">
+        <div id="ventana-chatbot" class="chatbot-caja shadow oculto" role="dialog" aria-label="Asistente virtual Cooratiendas">
+            <div class="chatbot-cabecera d-flex justify-content-between align-items-center p-3 text-white">
+                <div><strong class="d-block">Asistente Cooratiendas</strong><small>WhatsApp: +57 312 426 1632</small></div>
+                <button type="button" id="btn-cerrar-chat" class="btn btn-sm text-white" aria-label="Cerrar chat">X</button>
+            </div>
+
+            <div id="mensajes-chat" class="chatbot-mensajes p-3" aria-live="polite">
+                <div class="mensaje-bot">Hola, soy el asistente de <strong>Cooratiendas</strong>. ¿En qué te ayudo hoy? Escribe tu duda o envíala directo a nuestro WhatsApp <strong>+57 312 426 1632</strong>.</div>
+            </div>
+
+            <div class="p-2 d-flex flex-wrap gap-1 border-top">
+                <button type="button" class="btn-chip-chat" data-pregunta="¿Cuál es el horario de atención?">Horarios</button>
+                <button type="button" class="btn-chip-chat" data-pregunta="¿Cómo obtengo el 5% de descuento por registro?">Descuento Socio</button>
+                <button type="button" class="btn-chip-chat" data-pregunta="Quiero pedir mi carrito por WhatsApp">Pedir Carrito</button>
+            </div>
+
+            <form id="form-chatbot" class="d-flex border-top">
+                <label for="input-chat" class="visually-hidden">Escribe tu mensaje</label>
+                <input type="text" id="input-chat" class="form-control border-0 rounded-0" placeholder="Escribe tu mensaje..." required>
+                <button type="submit" class="btn btn-success rounded-0">Enviar</button>
+            </form>
+
+            <button type="button" id="btn-ir-whatsapp" class="btn-whatsapp-directo w-100 py-2 fw-bold text-white border-0">
+                Continuar en WhatsApp (+57 312 4261632)
+            </button>
+        </div>
+
+        <button type="button" id="btn-toggle-chat" class="btn-flotante-chat shadow">Chat / WhatsApp</button>
+    </div>
+
+    <!-- ==================== 7. MODAL DEL CARRITO DE COMPRAS ==================== -->
+    <div id="modal-carrito" class="modal-fondo oculto" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-carrito">
+        <div class="modal-contenido shadow">
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+                <h3 id="titulo-modal-carrito" class="h5 fw-bold mb-0">Tu Carrito de Compras</h3>
+                <button type="button" id="btn-cerrar-carrito" class="btn btn-sm" aria-label="Cerrar carrito">X</button>
+            </div>
+
+            <div id="items-carrito" class="lista-carrito mb-3"><p class="text-muted">Aún no has agregado productos.</p></div>
+
+            <p id="texto-ahorro" class="small text-success fw-bold mb-1 oculto"></p>
+            <p id="texto-descuento-socio" class="small text-primary fw-bold mb-2 oculto"></p>
+
+            <div class="caja-envio-gratis p-3 rounded-3 mb-3">
+                <p id="texto-envio" class="small mb-2">Te faltan <strong>$150.000</strong> para envío gratis</p>
+                <div class="progress" style="height: 10px;"><div id="barra-progreso-envio" class="progress-bar bg-success" style="width: 0%;"></div></div>
+            </div>
+
+            <p class="fs-5 text-end mb-3">Total a pagar: <strong id="total-carrito">$0</strong></p>
+            <div class="d-flex flex-wrap justify-content-end gap-2">
+                <button type="button" id="btn-vaciar" class="btn btn-warning fw-bold">Vaciar</button>
+                <button type="button" id="btn-pedir-wa-carrito" class="btn btn-success fw-bold">Pedir por WhatsApp</button>
+                <button type="button" id="btn-comprar" class="btn btn-primary fw-bold">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="notificacion" class="notificacion oculto" role="status" aria-live="polite"></div>
+
+    <!-- JS de Bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JS propio con toda la lógica del sitio -->
+    <script src="js/funcionalidad.js"></script>
+</body>
+
+</html>

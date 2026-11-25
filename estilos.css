@@ -1,0 +1,332 @@
+/* ================= 1. VARIABLES DE COLOR Y TEMAS (WCAG 2.2 AA) ================= */
+:root {
+    --color-fondo: #FFFBF2;        /* Fondo crema claro */
+    --color-tarjeta: #FFFFFF;      /* Fondo blanco de tarjetas */
+    --color-rojo: #B3141E;         /* Rojo institucional con contraste accesible */
+    --color-verde: #146630;        /* Verde institucional */
+    --color-whatsapp: #128C7E;     /* Verde WhatsApp */
+    --color-amarillo: #FFC72C;     /* Amarillo institucional */
+    --color-texto: #1E1A18;        /* Texto oscuro legible */
+    --color-borde: #D6CEC2;        /* Borde suave */
+}
+
+body.modo-oscuro {
+    --color-fondo: #161616;        /* Fondo oscuro */
+    --color-tarjeta: #242424;      /* Tarjetas oscuras */
+    --color-texto: #F5F5F5;        /* Texto claro */
+    --color-borde: #444444;        /* Bordes oscuros */
+}
+
+body.alto-contraste {
+    --color-fondo: #000000;        /* Fondo negro puro */
+    --color-tarjeta: #000000;      /* Tarjetas negras */
+    --color-rojo: #FFFF00;         /* Amarillo puro */
+    --color-verde: #00FF66;        /* Verde neón */
+    --color-texto: #FFFFFF;        /* Texto blanco puro */
+    --color-borde: #FFFFFF;        /* Bordes blancos */
+}
+
+/* ================= 2. BASE Y ACCESIBILIDAD ================= */
+html {
+    font-size: 16px;               /* Base modificable por A+ y A- */
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Fuente estándar */
+    background-color: var(--color-fondo);      /* Fondo dinámico */
+    color: var(--color-texto);                 /* Texto dinámico */
+}
+
+*:focus-visible {
+    outline: 3px solid #005FCC;    /* Enfoque visible con teclado TAB */
+    outline-offset: 2px;           /* Separación */
+}
+
+.saltar-contenido {
+    position: absolute;            /* Fuera del flujo */
+    top: -100px;                   /* Escondido arriba */
+    left: 15px;                    /* Izquierda */
+    background-color: var(--color-amarillo); /* Fondo amarillo */
+    color: #000000;                /* Negro */
+    padding: 10px 16px;            /* Relleno */
+    font-weight: bold;             /* Negrita */
+    z-index: 600;                  /* Encima de todo */
+    text-decoration: none;         /* Sin subrayado */
+}
+
+.saltar-contenido:focus {
+    top: 0;                        /* Visible al tabular */
+}
+
+/* ================= 3. BARRAS SUPERIORES Y ENCABEZADO ================= */
+.banner-superior {
+    background-color: var(--color-rojo); /* Fondo rojo */
+    color: #FFFFFF;                /* Texto blanco */
+    display: flex;                 /* Flexbox */
+    justify-content: center;       /* Centrado */
+    align-items: center;           /* Vertical */
+    gap: 12px;                     /* Espacio */
+    flex-wrap: wrap;               /* Ajuste móvil */
+    font-size: 0.9rem;             /* Tamaño */
+    font-weight: bold;             /* Negrita */
+}
+
+body.alto-contraste .banner-superior {
+    color: #000000;                /* Contraste alto */
+}
+
+.barra-accesibilidad {
+    background-color: #26211F;     /* Fondo oscuro */
+    color: #FFFFFF;                /* Texto blanco */
+    display: flex;                 /* Flexbox */
+    justify-content: flex-end;     /* Derecha */
+    align-items: center;           /* Centrado */
+    gap: 6px;                      /* Espacio */
+    flex-wrap: wrap;               /* Ajuste móvil */
+    font-size: 0.85rem;            /* Pequeño */
+}
+
+.encabezado {
+    background-color: var(--color-tarjeta); /* Fondo dinámico */
+    border-bottom: 4px solid var(--color-rojo); /* Borde rojo */
+    z-index: 100;                  /* Capa superior */
+}
+
+.logo-img {
+    background-color: #E5E0D8;     /* Fondo temporal */
+    border-radius: 50%;            /* Circular */
+    object-fit: cover;             /* Ajuste */
+    border: 2px solid var(--color-rojo); /* Borde */
+}
+
+.titulo-marca { color: var(--color-rojo); }
+.titulo-marca span { color: var(--color-verde); }
+.titulo-rojo { color: var(--color-rojo); }
+
+.nav-link-landing {
+    background: none;              /* Sin fondo */
+    border: none;                  /* Sin borde */
+    color: var(--color-texto);     /* Color texto */
+    font-weight: bold;             /* Negrita */
+    padding: 7px 11px;             /* Relleno compacto para 7 pestañas */
+    border-radius: 6px;            /* Bordes */
+    font-size: 0.92rem;            /* Tamaño equilibrado */
+    cursor: pointer;               /* Mano */
+}
+
+.nav-link-landing:hover {
+    background-color: rgba(179, 20, 30, 0.1); /* Hover */
+}
+
+.nav-link-landing.activo {
+    background-color: var(--color-rojo); /* Activo */
+    color: #FFFFFF;                /* Blanco */
+}
+
+body.alto-contraste .nav-link-landing.activo {
+    color: #000000;                /* Contraste alto */
+}
+
+/* ================= 4. SECCIONES, TARJETAS Y RECETAS ================= */
+.oculto { display: none !important; }
+
+.caja-seccion {
+    background-color: var(--color-tarjeta); /* Fondo caja */
+    color: var(--color-texto);     /* Texto */
+    border: 1px solid var(--color-borde); /* Borde */
+}
+
+.tarjeta-pasillo {
+    background-color: var(--color-tarjeta); /* Fondo */
+    color: var(--color-texto);     /* Texto */
+    border: 1px solid var(--color-borde); /* Borde */
+    border-radius: 8px;            /* Esquinas */
+    padding: 16px 10px;            /* Relleno */
+    display: flex;                 /* Flexbox */
+    flex-direction: column;        /* Columna */
+    align-items: center;           /* Centrado */
+    gap: 4px;                      /* Espacio */
+    cursor: pointer;               /* Mano */
+}
+
+.tarjeta-pasillo:hover { border-color: var(--color-rojo); }
+.tarjeta-pasillo span { font-size: 0.8rem; color: var(--color-verde); font-weight: bold; }
+
+.banner-promociones { background-color: var(--color-rojo); color: #FFFFFF; }
+body.alto-contraste .banner-promociones { background-color: #000000; border: 2px solid #FFFF00; }
+.caja-temporizador { background-color: rgba(0, 0, 0, 0.3); border: 1px solid var(--color-amarillo); }
+
+.btn-filtro {
+    background-color: var(--color-tarjeta); /* Fondo */
+    color: var(--color-texto);     /* Texto */
+    border: 1px solid var(--color-borde); /* Borde */
+    padding: 6px 14px;             /* Relleno */
+    border-radius: 6px;            /* Esquinas */
+    font-weight: bold;             /* Negrita */
+    cursor: pointer;               /* Mano */
+}
+
+.btn-filtro.activo {
+    background-color: var(--color-rojo); /* Activo */
+    color: #FFFFFF;                /* Blanco */
+    border-color: var(--color-rojo); /* Borde */
+}
+
+body.alto-contraste .btn-filtro.activo { color: #000000; }
+
+.tarjeta-producto, .tarjeta-mvv {
+    background-color: var(--color-tarjeta); /* Fondo */
+    color: var(--color-texto);     /* Texto */
+    border: 1px solid var(--color-borde); /* Borde */
+}
+
+.tarjeta-producto img, .img-receta {
+    width: 100%;                   /* Ancho completo */
+    height: 160px;                 /* Alto fijo */
+    background-color: #E5E0D8;     /* Fondo temporal mientras se carga foto */
+    border-radius: 6px;            /* Esquinas */
+    object-fit: cover;             /* Ajuste */
+}
+
+.vista-lista-activa .tarjeta-producto {
+    flex-direction: row;           /* Fila en vista lista */
+    align-items: center;           /* Centrado */
+    gap: 15px;                     /* Espacio */
+}
+
+.vista-lista-activa .tarjeta-producto img {
+    width: 110px;                  /* Ancho compacto */
+    height: 90px;                  /* Alto compacto */
+}
+
+.precio-anterior { text-decoration: line-through; font-size: 0.9rem; }
+
+/* ================= 5. CHATBOT WHATSAPP Y CARRITO ================= */
+.widget-chatbot {
+    position: fixed;               /* Fijo abajo derecha */
+    bottom: 20px;                  /* 20px abajo */
+    right: 20px;                   /* 20px derecha */
+    z-index: 250;                  /* Encima */
+    display: flex;                 /* Flexbox */
+    flex-direction: column;        /* Columna */
+    align-items: flex-end;         /* Derecha */
+    gap: 10px;                     /* Espacio */
+}
+
+.btn-flotante-chat {
+    background-color: var(--color-whatsapp); /* Verde WhatsApp */
+    color: #FFFFFF;                /* Blanco */
+    border: none;                  /* Sin borde */
+    padding: 12px 20px;            /* Relleno */
+    border-radius: 8px;            /* Esquinas */
+    font-weight: bold;             /* Negrita */
+    cursor: pointer;               /* Mano */
+}
+
+.chatbot-caja {
+    width: 330px;                  /* Ancho */
+    max-width: 90vw;               /* Responsivo */
+    background-color: var(--color-tarjeta); /* Fondo */
+    border-radius: 10px;           /* Esquinas */
+    border: 2px solid var(--color-whatsapp); /* Borde */
+    overflow: hidden;              /* Recorte */
+}
+
+.chatbot-cabecera { background-color: var(--color-whatsapp); }
+
+.chatbot-mensajes {
+    height: 210px;                 /* Altura */
+    overflow-y: auto;              /* Scroll */
+    display: flex;                 /* Flexbox */
+    flex-direction: column;        /* Columna */
+    gap: 8px;                      /* Espacio */
+    background-color: var(--color-fondo); /* Fondo */
+}
+
+.mensaje-bot, .mensaje-usuario {
+    padding: 8px 12px;             /* Relleno */
+    border-radius: 8px;            /* Esquinas */
+    font-size: 0.9rem;             /* Letra */
+    max-width: 85%;                /* Máximo */
+}
+
+.mensaje-bot {
+    background-color: var(--color-tarjeta); /* Fondo */
+    border: 1px solid var(--color-borde); /* Borde */
+    align-self: flex-start;        /* Izquierda */
+}
+
+.mensaje-usuario {
+    background-color: var(--color-whatsapp); /* Verde */
+    color: #FFFFFF;                /* Blanco */
+    align-self: flex-end;          /* Derecha */
+}
+
+.btn-chip-chat {
+    background-color: var(--color-fondo); /* Fondo */
+    color: var(--color-texto);     /* Texto */
+    border: 1px solid var(--color-whatsapp); /* Borde */
+    padding: 3px 9px;              /* Relleno */
+    border-radius: 6px;            /* Esquinas */
+    font-size: 0.78rem;            /* Pequeño */
+    cursor: pointer;               /* Mano */
+}
+
+.btn-whatsapp-directo { background-color: #075E54; cursor: pointer; }
+
+.modal-fondo {
+    position: fixed;               /* Cubre pantalla */
+    inset: 0;                      /* 0 en los 4 lados */
+    background-color: rgba(0, 0, 0, 0.65); /* Fondo oscuro */
+    display: flex;                 /* Centra */
+    justify-content: center;       /* Horizontal */
+    align-items: center;           /* Vertical */
+    z-index: 300;                  /* Encima */
+    padding: 15px;                 /* Margen */
+}
+
+.modal-contenido {
+    background-color: var(--color-tarjeta); /* Fondo */
+    width: 100%;                   /* Fluido */
+    max-width: 500px;              /* Máximo */
+    border-radius: 10px;           /* Esquinas */
+    padding: 20px;                 /* Relleno */
+    border: 1px solid var(--color-borde); /* Borde */
+}
+
+.lista-carrito { max-height: 210px; overflow-y: auto; }
+
+.item-carrito {
+    display: flex;                 /* Fila */
+    justify-content: space-between;/* Espaciado */
+    align-items: center;           /* Centrado */
+    gap: 8px;                      /* Espacio */
+    padding: 8px 0;                /* Relleno */
+    border-bottom: 1px solid var(--color-borde); /* Línea */
+}
+
+.caja-envio-gratis { background-color: var(--color-fondo); border: 1px solid var(--color-borde); }
+
+.pie-pagina {
+    background-color: #26211F;     /* Fondo oscuro */
+    padding: 25px 15px 80px 15px;  /* Espacio inferior para chat */
+    margin-top: 40px;              /* Margen superior */
+    border-top: 4px solid var(--color-amarillo); /* Línea amarilla */
+}
+
+.notificacion {
+    position: fixed;               /* Flotante */
+    bottom: 80px;                  /* Encima chat */
+    right: 20px;                   /* Derecha */
+    background-color: var(--color-texto); /* Fondo */
+    color: var(--color-tarjeta);   /* Texto */
+    padding: 10px 18px;            /* Relleno */
+    border-radius: 6px;            /* Esquinas */
+    font-weight: bold;             /* Negrita */
+    z-index: 400;                  /* Encima */
+}
+
+@media (max-width: 576px) {
+    .barra-accesibilidad { justify-content: center; }
+    .vista-lista-activa .tarjeta-producto { flex-direction: column; }
+}
